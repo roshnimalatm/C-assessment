@@ -1,0 +1,41 @@
+#include <stdio.h>
+int secondLargest(int arr[], int n)
+{
+    int largest = arr[0];
+    int second = arr[1];
+    int i, temp;
+    if (second > largest)
+    {
+        temp = largest;
+        largest = second;
+        second = temp;
+    }
+    for (i = 2; i < n; i++)
+    {
+        if (arr[i] > largest)
+        {
+            second = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] > second && arr[i] < largest)
+        {
+            second = arr[i];
+        }
+    }
+    return second;
+}
+int main()
+{
+    int arr[100], n, i;
+
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("%d", secondLargest(arr, n));
+
+    return 0;
+}
